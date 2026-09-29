@@ -21,5 +21,6 @@ func physics_function(_delta: float, _new_input: int, _old_input: int):
 	
 	if body.is_on_floor():
 		body.up_direction = body.get_floor_normal()
+		body.rotation = body.get_floor_angle(body.up_direction)
 		fall_timer = body.COYOTE_TIME
 	else: fall_timer -= _delta

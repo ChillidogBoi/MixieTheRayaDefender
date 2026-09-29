@@ -9,7 +9,7 @@ func test(_delta: float, _new_input: int, _old_input: int) -> String:
 
 func enter_function(_delta: float, _new_input: int, _old_input: int):
 	timer = 0.0
-	body.velocity.y = -body.JUMP_STRENGTH
+	body.velocity += body.up_direction * body.JUMP_STRENGTH
 	body.move_and_slide()
 
 func physics_function(_delta: float, _new_input: int, _old_input: int):
