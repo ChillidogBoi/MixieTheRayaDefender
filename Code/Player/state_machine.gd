@@ -1,4 +1,4 @@
-class_name StateMachine
+class_name PlayerStateMachine
 extends Node
 
 @export var body: Mixie
@@ -13,6 +13,7 @@ func _ready():
 func _process(delta):
 	current_state.idle_function(delta, old_inputs)
 
+## The main behaivior of the StateMachine
 func _physics_process(delta):
 	var new_inputs: int = get_inputs()
 	var new_state: String = current_state.test(delta, new_inputs, old_inputs)
@@ -51,6 +52,8 @@ func get_inputs() -> int:
 		if body.velocity != Vector2.ZERO: print(body.velocity)
 	
 	return inputs
+
+## Direct PlayerState overrides through connected signals from body. ##
 
 func _on_mixie_entered_sandstorm():
 	if current_state.overrides_overrides: return
