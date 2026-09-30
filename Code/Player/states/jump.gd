@@ -15,8 +15,4 @@ func enter_function(_delta: float, _new_input: int, _old_input: int):
 func physics_function(_delta: float, _new_input: int, _old_input: int):
 	timer += _delta
 	
-	var direction: int = (_new_input & 0b01) - ((_new_input & 0b10) >> 1)
-	if abs(body.current_ground_speed + (direction * body.ACCELERATION)) <= body.MAX_GROUND_SPEED:
-		body.current_ground_speed += direction * body.ACCELERATION
-	body.velocity.x = body.current_ground_speed
-	body.move_and_slide()
+	do_player_horizontal_movement(_new_input, body.MAX_AIR_SPEED)

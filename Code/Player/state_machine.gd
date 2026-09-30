@@ -3,6 +3,7 @@ extends Node
 @export var body: CharacterBody2D
 @export var current_state: PlayerState
 var old_inputs: int = 0
+var override := false
 
 func _ready():
 	for c: PlayerState in get_children():
@@ -13,6 +14,7 @@ func _physics_process(delta):
 	var new_state: String = current_state.test(delta, new_inputs, old_inputs)
 	
 	if new_state != "current":
+		if override: return
 		current_state.exit_function(delta, new_inputs, old_inputs)
 		current_state = find_child(new_state)
 		current_state.enter_function(delta, new_inputs, old_inputs)
@@ -37,4 +39,26 @@ func get_inputs() -> int:
 	if Input.is_action_pressed("special_attack"): inputs |= 0b01000000
 	if Input.is_action_pressed("pause"): inputs |= 0b10000000
 	
+	if Input.is_action_just_pressed("debug"):
+		print(current_state.name)
+		if body.is_near_wall(): print("on_wall")
+	
 	return inputs
+
+func _on_mixie_entered_sandstorm():
+	override = true
+	var new_inputs: int = get_inputs()
+	current_state.exit_function(0.0, new_inputs, old_inputs)
+	current_state = find_child("Sandstorm")
+	current_state.enter_function(0.0, new_inputs, old_inputs)
+	await RenderingServer.frame_post_draw
+	override = false
+
+func _on_mixie_exited_sandstorm():
+	override = true
+	var new_inputs: int = get_inputs()
+	current_state.exit_function(0.0, new_inputs, old_inputs)
+	current_state = find_child("Fall")
+	current_state.enter_function(0.0, new_inputs, old_inputs)
+	await RenderingServer.frame_post_draw
+	override = false
