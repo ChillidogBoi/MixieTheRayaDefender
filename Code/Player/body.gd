@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal entered_sandstorm
 signal exited_sandstorm
+signal entered_grindrail(rail_follower: PathFollow2D)
 
 @export var ground_ray: RayCast2D
 @export var left_wall_jump_area: Area2D
@@ -18,6 +19,8 @@ const WALL_JUMP_TIME = 0.375
 const JUMP_STRENGTH = 320.0
 const MAX_JUMP_TIME = 0.25
 const COYOTE_TIME = 0.125
+
+const RAIL_SPEED = 1080.0
 
 var current_ground_speed: float = 0.0
 

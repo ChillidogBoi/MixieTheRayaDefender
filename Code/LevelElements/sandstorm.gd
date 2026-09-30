@@ -15,23 +15,18 @@ extends Sprite2D
 @export_subgroup("Internal", "internal_")
 @export var internal_collision_shape: CollisionShape2D
 
-var in_editor := true
 var held_bodies: Array[CharacterBody2D]
 
 
-func _ready():
-	await get_parent().ready
-	in_editor = false
-
 func _on_area_2d_body_entered(body: CollisionObject2D):
-	if in_editor: return
+	if Engine.is_editor_hint(): return
 	if not body is CharacterBody2D: return
 	
 	held_bodies.append(body)
 	if body.has_signal("entered_sandstorm"): body.entered_sandstorm.emit()
 
 func _on_area_2d_body_exited(body: CollisionObject2D):
-	if in_editor: return
+	if Engine.is_editor_hint(): return
 	if not body is CharacterBody2D: return
 	
 	held_bodies.erase(body)

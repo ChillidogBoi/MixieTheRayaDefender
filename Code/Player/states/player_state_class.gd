@@ -8,7 +8,7 @@ func test(_delta: float, _new_input: int, _old_input: int) -> String:
 
 func enter_function(_delta: float, _new_input: int, _old_input: int):
 	pass
-func idle_function(_delta: float, _new_input: int, _old_input: int):
+func idle_function(_delta: float, _old_input: int):
 	pass
 func physics_function(_delta: float, _new_input: int, _old_input: int):
 	pass

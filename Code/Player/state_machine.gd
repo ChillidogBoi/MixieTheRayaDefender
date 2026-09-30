@@ -9,6 +9,9 @@ func _ready():
 	for c: PlayerState in get_children():
 		c.body = body
 
+func _process(delta):
+	current_state.idle_function(delta, old_inputs)
+
 func _physics_process(delta):
 	var new_inputs: int = get_inputs()
 	var new_state: String = current_state.test(delta, new_inputs, old_inputs)
@@ -47,19 +50,19 @@ func get_inputs() -> int:
 	return inputs
 
 func _on_mixie_entered_sandstorm():
-	override = true
-	var new_inputs: int = get_inputs()
-	current_state.exit_function(0.0, new_inputs, old_inputs)
-	current_state = find_child("Sandstorm")
-	current_state.enter_function(0.0, new_inputs, old_inputs)
-	await RenderingServer.frame_post_draw
-	override = false
+	override_state("Sandstorm")
 
 func _on_mixie_exited_sandstorm():
+	override_state("Fall")
+
+func _on_mixie_entered_grindrail(rail_follower):
+	override_state("GrindRail")
+
+func override_state(new_state: String):
 	override = true
 	var new_inputs: int = get_inputs()
 	current_state.exit_function(0.0, new_inputs, old_inputs)
-	current_state = find_child("Fall")
+	current_state = find_child(new_state)
 	current_state.enter_function(0.0, new_inputs, old_inputs)
 	await RenderingServer.frame_post_draw
 	override = false
