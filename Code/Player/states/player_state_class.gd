@@ -12,12 +12,13 @@ func test(_delta: float, _new_input: int, _old_input: int) -> String:
 	return "current"
 
 ## Called when the state is the new current_state of the StateMachine (on the physics process).
+## Use this to start animations, reset values and anything else that only needs to be done once.
 func enter_function(_delta: float, _new_input: int, _old_input: int):
 	pass
-## Called every frame on the idle process
+## Called every frame on the idle process. Prefer physics_function() over this for anything involving body.
 func idle_function(_delta: float, _old_input: int):
 	pass
-## Called every physics frame
+## Called every physics frame. Preferred over idle_function() for anything involving body.
 func physics_function(_delta: float, _new_input: int, _old_input: int):
 	pass
 ## Called after another state has been chosen (on the physics process).
