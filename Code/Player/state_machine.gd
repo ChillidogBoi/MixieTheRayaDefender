@@ -42,6 +42,7 @@ func get_inputs() -> int:
 	if Input.is_action_just_pressed("debug"):
 		print(current_state.name)
 		if body.is_near_wall(): print("on_wall")
+		if body.velocity != Vector2.ZERO: print(body.velocity)
 	
 	return inputs
 

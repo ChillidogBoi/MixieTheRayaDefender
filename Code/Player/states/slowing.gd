@@ -11,6 +11,8 @@ func test(_delta: float, _new_input: int, _old_input: int) -> String:
 
 func physics_function(_delta: float, _new_input: int, _old_input: int):
 	body.current_ground_speed -= sign(body.current_ground_speed) * body.ACCELERATION
+	if abs(body.current_ground_speed) < body.ACCELERATION:
+		body.current_ground_speed = 0
 	
 	body.velocity.x = body.current_ground_speed
 	body.move_and_slide()
