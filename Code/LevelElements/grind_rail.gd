@@ -33,5 +33,8 @@ func generate_collision():
 func _on_area_2d_body_entered(body: CollisionObject2D):
 	if Engine.is_editor_hint(): return
 	if not body is CharacterBody2D: return
+	if not body.has_signal("entered_grindrail"): return
 	
-	if body.has_signal("entered_grindrail"): body.entered_grindrail.emit(i_follower)
+	i_follower.progress = curve.get_closest_offset(body.global_position - global_position)
+	body.entered_grindrail.emit(i_follower)
+	

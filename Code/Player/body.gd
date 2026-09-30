@@ -8,9 +8,10 @@ signal entered_grindrail(rail_follower: PathFollow2D)
 @export var left_wall_jump_area: Area2D
 @export var right_wall_jump_area: Area2D
 
-const MAX_GROUND_SPEED = 750.0
+const MAX_GROUND_SPEED = 625.0
 const MAX_AIR_SPEED = 450.0
 const ACCELERATION = 12.5
+const FRICTION = 25.0
 
 const WALL_SLIDE_GRAVITY = 0.25
 const WALL_JUMP_STRENGTH = Vector2(360.0, 240.0)
