@@ -1,0 +1,21 @@
+								[Mixie The Raya Defender]
+
+	An Original Story by:
+		Jay Perryman
+
+	With Sprite Art by:
+		JN_ZXN
+	
+	Level Design by:
+		Jay Perryman
+
+	Programming by:
+		ChillidogBoi
+		MidoDaKing
+
+	CC0 Shader Code courtesy of godotshaders.com Contributors:
+		Cammymoop
+		mo32167
+
+	Concept Art:
+		Jay Perryman

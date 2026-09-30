@@ -1,5 +1,5 @@
-// simple rain/snow shader
-// useful learning resources:
+// simple rain/snow shader by mo32167
+// who wishes to thank:
 // https://www.ronja-tutorials.com/post/034-2d-sdf-basics/#circle
 // https://iquilezles.org/articles/distfunctions2d/
 

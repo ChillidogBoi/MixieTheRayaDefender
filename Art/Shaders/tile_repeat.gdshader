@@ -1,3 +1,5 @@
+// Atlas Region Tiled Repeat (2D) by Cammymoop
+
 shader_type canvas_item;
 
 uniform vec2 tile_factor = vec2(1.0, 1.0);
