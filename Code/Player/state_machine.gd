@@ -1,3 +1,4 @@
+class_name StateMachine
 extends Node
 
 @export var body: Mixie
@@ -25,6 +26,8 @@ func _physics_process(delta):
 	current_state.physics_function(delta, new_inputs, old_inputs)
 	old_inputs = new_inputs
 
+## Returns a bitmap. From left to right it's:
+## pause = 128, special_attack = 64, melee_attack = 32, jump = 16, up = 8, down = 4, left = 2, right = 1
 func get_inputs() -> int:
 	var inputs := 0
 	if not Input.is_anything_pressed(): return 0
