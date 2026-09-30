@@ -28,7 +28,7 @@ func generate_collision():
 	i_line.points = curve.get_baked_points()
 	i_line.width = collision_generator_thickness
 	
-	i_follower.v_offset = -collision_generator_thickness / 2.0
+	i_follower.v_offset = -(collision_generator_thickness / 2.0) + 1.0
 
 func _on_area_2d_body_entered(body: CollisionObject2D):
 	if Engine.is_editor_hint(): return

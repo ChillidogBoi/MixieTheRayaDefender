@@ -1,6 +1,7 @@
 class_name PlayerState
 extends Node
 
+@export var overrides_overrides := false
 @export var body: CharacterBody2D
 
 func test(_delta: float, _new_input: int, _old_input: int) -> String:

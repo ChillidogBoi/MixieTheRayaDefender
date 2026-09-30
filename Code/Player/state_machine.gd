@@ -50,12 +50,14 @@ func get_inputs() -> int:
 	return inputs
 
 func _on_mixie_entered_sandstorm():
+	if current_state.overrides_overrides: return
 	override_state("Sandstorm")
 
 func _on_mixie_exited_sandstorm():
 	override_state("Fall")
 
 func _on_mixie_entered_grindrail(rail_follower):
+	if current_state.overrides_overrides: return
 	override_state("GrindRail")
 
 func override_state(new_state: String):
