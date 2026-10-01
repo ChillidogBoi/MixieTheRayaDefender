@@ -36,16 +36,19 @@ const WALL_JUMP_TIME = 0.375
 
 ## How high the player will jump. Should be multiplied by body.up_direction.
 const JUMP_STRENGTH = 320.0
-## The amount of time the player can hold the jump button for additional height.
+## The amount of time (in seconds) the player can hold the jump button for additional height.
 const MAX_JUMP_TIME = 0.25
-## The amount of time after walking off of a cliff before the player will enter StateMachine/Fall.
+## The amount of time (in seconds) after walking off of a cliff before the player will enter StateMachine/Fall.
 const COYOTE_TIME = 0.125
 
-## The speed at which the PathFollow2D travels along the Path2D. Should be multiplied by delta.
+## The speed at which Mixie must travel to enter a Corkscrew or Loop-the-loop without falling.
+const CAN_LOOP_SPEED = 400.0
+## The speed at which the PathFollow2D travels along the Path2D. Must be manually multiplied by delta.
 const RAIL_SPEED = 1080.0
 
 ## Applied to velocity.x when the game isn't paused. The "ground" part is something of a misnomer.
 var current_ground_speed: float = 0.0
+
 
 ## I don't like how is_on_wall() works, so use this instead.
 ## It uses left_wall_jump_area and right_wall_jump_area internally.

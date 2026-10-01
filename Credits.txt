@@ -1,21 +1,32 @@
-								[Mixie The Raya Defender]
+[Mixie The Raya Defender]
 
 	An Original Story by:
 		Jay Perryman
 
 	With Sprite Art by:
-		JN_ZXN
+		Jerell
 	
 	Level Design by:
 		Jay Perryman
 
+	Sound Effects and Foley by:
+		Icarus
+
 	Programming by:
 		ChillidogBoi
-		MidoDaKing
 
-	CC0 Shader Code courtesy of godotshaders.com Contributors:
+	Visuals:
+		Jerell
+
+	Godotshaders.com Contributors:
 		Cammymoop
 		mo32167
 
 	Concept Art:
 		Jay Perryman
+
+	Music by:
+		Icarus
+
+	UI Design:
+		Jerell
