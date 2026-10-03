@@ -15,7 +15,7 @@ func test(_delta: float, _new_input: int, _old_input: int) -> String:
 	return "current"
 
 func physics_function(_delta: float, _new_input: int, _old_input: int):
-	if body.velocity.y < 0: body.velocity += body.get_gravity() * _delta
-	else: body.velocity += body.get_gravity() * _delta * body.WALL_SLIDE_GRAVITY
+	if body.current_falling_speed.y < 0: body.current_falling_speed += body.get_gravity() * _delta
+	else: body.current_falling_speed += body.get_gravity() * _delta * body.WALL_SLIDE_GRAVITY
 	do_player_horizontal_movement(_new_input, body.MAX_AIR_SPEED)
 	if still_on_wall and not body.is_near_wall(): still_on_wall = false

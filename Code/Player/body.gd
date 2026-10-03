@@ -5,8 +5,6 @@ extends CharacterBody2D
 signal entered_sandstorm
 ## Used to switch to the relevant PlayerState by the StateMachine.
 signal exited_sandstorm
-## Used to switch to the relevant PlayerState by the StateMachine.
-signal entered_grindrail(rail_follower: PathFollow2D)
 
 ## At Mixie's feet, pointed downwards, for buffering jumps.
 @export var ground_ray: RayCast2D
@@ -43,12 +41,17 @@ const COYOTE_TIME = 0.125
 
 ## The speed at which Mixie must travel to enter a Corkscrew or Loop-the-loop without falling.
 const CAN_LOOP_SPEED = 400.0
+## The amount of time (in seconds) it takes Mixie to align with the floor
+const FLOOR_TWEEN = 0.0625
 ## The speed at which the PathFollow2D travels along the Path2D. Must be manually multiplied by delta.
 const RAIL_SPEED = 1080.0
 
 ## Applied to velocity.x when the game isn't paused. The "ground" part is something of a misnomer.
 var current_ground_speed: float = 0.0
-
+## Applied to velocity.y when the game isn't paused.
+var current_falling_speed := Vector2.ZERO
+## For changing global_rotation. Make sure to set it to a new Tween each use.
+var rotation_tween: Tween = null
 
 ## I don't like how is_on_wall() works, so use this instead.
 ## It uses left_wall_jump_area and right_wall_jump_area internally.

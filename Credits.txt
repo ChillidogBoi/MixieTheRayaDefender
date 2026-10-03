@@ -9,9 +9,6 @@
 	Level Design by:
 		Jay Perryman
 
-	Sound Effects and Foley by:
-		Icarus
-
 	Programming by:
 		ChillidogBoi
 
@@ -23,9 +20,6 @@
 		mo32167
 
 	Concept Art:
-		Jay Perryman
-
-	Music by:
 		Icarus
 
 	UI Design:

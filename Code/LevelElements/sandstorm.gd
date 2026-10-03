@@ -28,19 +28,23 @@ func _on_area_2d_body_entered(body: CollisionObject2D):
 	if Engine.is_editor_hint(): return
 	if not body is CharacterBody2D: return
 	
+	print("entered_sandstorm")
+	
 	held_bodies.append(body)
 	if body.has_signal("entered_sandstorm"): body.entered_sandstorm.emit()
 
 ## Remove body from list.
 func _on_area_2d_body_exited(body: CollisionObject2D):
 	if Engine.is_editor_hint(): return
-	if not body is CharacterBody2D: return
+	if not body is Mixie: return
 	
 	held_bodies.erase(body)
-	if body.has_signal("exited_sandstorm"): body.exited_sandstorm.emit()
-	if not launch_at_end: body.velocity.y = -strength
+	if body.has_signal("exited_sandstorm"):
+		body.exited_sandstorm.emit()
+	if not launch_at_end: body.current_falling_speed.y = -strength
 
 ## Apply forces.
 func _physics_process(delta):
 	for n in held_bodies:
-		n.velocity.y -= strength * delta
+		if n is Mixie: n.current_falling_speed.y -= strength * delta
+		else: n.velocity.y -= strength * delta

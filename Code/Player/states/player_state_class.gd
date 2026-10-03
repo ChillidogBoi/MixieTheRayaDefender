@@ -52,5 +52,6 @@ func do_player_horizontal_movement(_new_input: int, speed_limit: float):
 		else: body.current_ground_speed = clamp(
 			body.current_ground_speed, 0, speed_limit * 2
 		)
-	body.velocity.x = body.current_ground_speed
+	var temp_vel := Vector2(body.current_ground_speed, 0).rotated(body.global_rotation)
+	body.velocity = temp_vel + body.current_falling_speed
 	body.move_and_slide()

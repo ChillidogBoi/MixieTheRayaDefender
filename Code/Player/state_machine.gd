@@ -55,6 +55,9 @@ func get_inputs() -> int:
 
 ## Direct PlayerState overrides through connected signals from body. ##
 
+func _on_mixie_entered_vertical_loop_ramp():
+	override_state("OnLoopingRamp")
+
 func _on_mixie_entered_sandstorm():
 	if current_state.overrides_overrides: return
 	override_state("Sandstorm")

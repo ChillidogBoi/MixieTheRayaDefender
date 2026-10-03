@@ -35,11 +35,10 @@ func generate_collision():
 	i_follower.v_offset = -(collision_generator_thickness / 2.0) + 1.0
 
 ## Override the current PlayerState with StateMachine/GrindRail, when the Player collides with the grindrail.
-func _on_area_2d_body_entered(body: CollisionObject2D):
+func _on_area_2d_area_entered(area: Area2D):
 	if Engine.is_editor_hint(): return # If the game isn't running.
-	if not body is CharacterBody2D: return
-	if not body.has_signal("entered_grindrail"): return
+	if not area.has_signal("entered_grindrail"): return
 	
-	i_follower.progress = curve.get_closest_offset(body.global_position - global_position)
-	body.entered_grindrail.emit(i_follower)
+	i_follower.progress = curve.get_closest_offset(area.global_position - global_position)
+	area.entered_grindrail.emit(i_follower)
 	
