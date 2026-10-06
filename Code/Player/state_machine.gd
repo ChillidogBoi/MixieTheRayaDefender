@@ -20,6 +20,7 @@ func _physics_process(delta):
 	
 	if new_state != "current":
 		if override: return
+		print(new_state)
 		current_state.exit_function(delta, new_inputs, old_inputs)
 		current_state = find_child(new_state)
 		current_state.enter_function(delta, new_inputs, old_inputs)
@@ -56,6 +57,7 @@ func get_inputs() -> int:
 ## Direct PlayerState overrides through connected signals from body. ##
 
 func _on_mixie_entered_vertical_loop_ramp():
+	if current_state.overrides_overrides: return
 	override_state("OnLoopingRamp")
 
 func _on_mixie_entered_sandstorm():
@@ -70,6 +72,7 @@ func _on_mixie_entered_grindrail(rail_follower):
 	override_state("GrindRail")
 
 func override_state(new_state: String):
+	print(new_state)
 	override = true
 	var new_inputs: int = get_inputs()
 	current_state.exit_function(0.0, new_inputs, old_inputs)

@@ -28,8 +28,6 @@ func _on_area_2d_body_entered(body: CollisionObject2D):
 	if Engine.is_editor_hint(): return
 	if not body is CharacterBody2D: return
 	
-	print("entered_sandstorm")
-	
 	held_bodies.append(body)
 	if body.has_signal("entered_sandstorm"): body.entered_sandstorm.emit()
 

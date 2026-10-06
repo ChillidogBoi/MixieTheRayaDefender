@@ -52,10 +52,14 @@ var current_ground_speed: float = 0.0
 var current_falling_speed := Vector2.ZERO
 ## For changing global_rotation. Make sure to set it to a new Tween each use.
 var rotation_tween: Tween = null
+## The rotation tween's target.
+var rotation_tween_target: float = 0.0
 
 ## I don't like how is_on_wall() works, so use this instead.
 ## It uses left_wall_jump_area and right_wall_jump_area internally.
 func is_near_wall() -> bool:
+	if global_rotation != 0: return false
+	
 	var bodies: Array[Node2D] = left_wall_jump_area.get_overlapping_bodies()
 	bodies.append_array(right_wall_jump_area.get_overlapping_bodies())
 	

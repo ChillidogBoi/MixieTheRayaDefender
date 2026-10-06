@@ -21,12 +21,11 @@ func _ready():
 		i_left_debug.visible = true
 		i_left_debug.color = DEBUG_DISABLED_COLOR
 	
-	i_right_collision.disabled = false
-	i_left_collision.disabled = true
+	#i_right_collision.disabled = false
+	#i_left_collision.disabled = true
 
 
 func _on_left_area_entered(body):
-	print(body.name)
 	if not body.has_signal("entered_vertical_loop_ramp"): return
 	body.entered_vertical_loop_ramp.emit()
 	if debug:
@@ -36,12 +35,9 @@ func _on_left_area_entered(body):
 	i_right_collision.set_deferred("disabled", true)
 	i_left_collision.set_deferred("disabled", false)
 	
-	await get_tree().process_frame
-	print("left")
 
 
 func _on_right_area_entered(body):
-	print(body.name)
 	if not body.has_signal("entered_vertical_loop_ramp"): return
 	body.entered_vertical_loop_ramp.emit()
 	if debug:
@@ -51,5 +47,3 @@ func _on_right_area_entered(body):
 	i_right_collision.set_deferred("disabled", false)
 	i_left_collision.set_deferred("disabled", true)
 	
-	await get_tree().process_frame
-	print("right")
