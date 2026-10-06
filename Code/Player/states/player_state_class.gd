@@ -44,6 +44,10 @@ func exit_function(_delta: float, _new_input: int, _old_input: int):
 func do_player_horizontal_movement(_new_input: int, speed_limit: float, dont_consider_walls := false):
 	var direction: int = (_new_input & 0b01) - ((_new_input & 0b10) >> 1) # Calculate input.
 	
+	if direction == 0: body.current_ground_speed = move_toward(
+		body.current_ground_speed, 0.0, body.FRICTION
+	)
+	
 	if (body.current_ground_speed + (direction * body.ACCELERATION)) * direction <= speed_limit:
 		body.current_ground_speed += direction * body.ACCELERATION # Apply acceleration.
 	

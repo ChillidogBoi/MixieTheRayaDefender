@@ -7,9 +7,9 @@ func enter_function(_delta: float, _new_input: int, _old_input: int):
 	body.current_falling_speed = Vector2.ZERO
 
 func test(_delta: float, _new_input: int, _old_input: int) -> String:
-#	if body.rotation_tween_target == 0.0: return "Walk"
-#	if _new_input & 0b0011 == 0: return "Slowing"
-#	print("loop")
+	if abs(body.current_ground_speed) < body.CAN_LOOP_SPEED:
+		do_player_rotation(Vector2.UP)
+		return "Fall"
 	return "current"
 
 func physics_function(_delta: float, _new_input: int, _old_input: int):

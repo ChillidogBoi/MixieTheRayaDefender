@@ -21,7 +21,7 @@ func physics_function(_delta: float, _new_input: int, _old_input: int):
 	body.current_falling_speed += body.get_gravity() * _delta
 	do_player_horizontal_movement(_new_input, body.MAX_AIR_SPEED)
 	
-	if body.ground_ray.is_colliding(): do_player_rotation(body.ground_ray.get_collision_normal())
+#	if body.ground_ray.is_colliding(): do_player_rotation(body.ground_ray.get_collision_normal())
 	
 	if body.is_near_wall(): go_to_wallslide = true
 
