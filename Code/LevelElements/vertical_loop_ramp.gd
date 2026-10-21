@@ -47,3 +47,21 @@ func _on_right_area_entered(body):
 	i_right_collision.set_deferred("disabled", false)
 	i_left_collision.set_deferred("disabled", true)
 	
+
+
+func _on_right_area2_entered(area):
+	if debug:
+		i_right_debug.color = DEBUG_ENABLED_COLOR
+		i_left_debug.color = DEBUG_DISABLED_COLOR
+	
+	i_right_collision.set_deferred("disabled", false)
+	i_left_collision.set_deferred("disabled", true)
+
+
+func _on_left_area2_entered(area):
+	if debug:
+		i_right_debug.color = DEBUG_DISABLED_COLOR
+		i_left_debug.color = DEBUG_ENABLED_COLOR
+	
+	i_right_collision.set_deferred("disabled", true)
+	i_left_collision.set_deferred("disabled", false)
